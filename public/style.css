@@ -10,44 +10,154 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    color: white;
+    letter-spacing: .05rem;
+}
+
+html { visibility:hidden; }
+
+html, body{
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 body{
     background-color: var(--bg);
 }
 
+.main-grid{
+    display: grid;
+    grid-template-columns: 16% 84%;
+    min-height: 100%;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: auto 0;
+    padding: 0 .5rem;
+}
+
 header{
     display: flex;
+    padding: 1rem;
+}
+
+.right-ct header{
+    background-color: var(--purple);
+}
+
+.right-ct img, .left-ct img{
+    height: 45px;
+}
+
+.left-ct{
+    background-color: var(--violet);
+}
+
+.left-ct ul a{
+    display: flex;
+    font-weight: 500;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+.left-ct ul a img{
+    margin: auto 0;
+    width: 25px;
+    height: 25px;
+}
+
+.left-ct ul li{
+    margin: auto 0;
+    padding: .75rem .5rem;
+}
+
+.left-ct ul a:not(#active):hover {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
+.right-content{
+    width: 100%;
+    overflow: auto;
+}
+
+#active{
+    background-color: var(--bg);
+}
+
+.table-div{
+    display: flex;
     justify-content: center;
-    background-color: var(--headerbg);
 }
 
-header h1{
-    padding: 1rem 0;
+.right-content h3{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1rem 0;
 }
 
-.content{
-    justify-content: center;
-}
-
-.buttons-container{
-    display: grid;
-    margin: 2rem auto;
-    width: 1080px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: .5rem;
-}
-
-.buttons-container button{
-    font-size: 2rem;
-    color: var(--purple);
-    font-weight: bold;
+.table-div thead{
     background-color: var(--wine);
+}
+
+.table-div thead tr th:first-child{
+    border-top-left-radius: 5px;
+}
+
+.table-div thead tr th:last-child{
+    border-top-right-radius: 5px;
+}
+
+.table-div table{
+    background-color: var(--violet);
+    border-radius: 5px;
+    padding: .5rem .25rem;
+    margin: .5rem 0;
+    border-collapse: collapse;
+}
+
+.table-div table tr th, .right-content table tr td{
+    padding: .5rem 1rem;
+}
+
+.table-div button{
     border: none;
-    border-radius: .5rem;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: .5rem;
+    margin: .25rem 0;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.table-div .add-button{
+    background-color: green;
+    font-size: 1.25rem;
+}
+
+.table-div .remove-button{
+    background-color: red;
+}
+
+.table-div .add-button:hover{
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
+.table-div .remove-button:hover, .table-div .alter-button:hover{
+    transform: scale(0.9);
+}
+
+.table-div .alter-button{
+    background-color: orange;
 }

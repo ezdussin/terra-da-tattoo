@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +20,9 @@ Route::get('/laravel', function () {
 });
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', 
+    ['products' => DB::table('products')->get(), 
+    'users' => DB::table('users')->get(), 
+    'providers' => DB::table('providers')->get(), 
+    'clients' => DB::table('clients')->get()]);
 });
