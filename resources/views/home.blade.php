@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <title>Terra da Tattoo</title>
 </head>
@@ -88,6 +89,17 @@
                                     <td><button class="remove-button">X</button></td>
                                 </tr>
                                 @endforeach
+                                <tr>
+                                    <form id="insert-form" action="/insertProvider" method="post">
+                                        <td><input type="text" name="name"></td>
+                                        <td><input type="text" name="email"></td>
+                                        <td><input type="text" name="telephone"></td>
+                                        <td><input type="text" name="cnpj"></td>
+                                        <td><input type="text" name="address"></td>
+                                        <td><button class="insert-button">Inserir</button></td>
+                                    </form>
+                                        <td><button class="remove-button">X</button></td>
+                                </tr>
                             </tbody>
                         </table>
                         <button class="add-button">+</button>

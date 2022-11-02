@@ -1,12 +1,10 @@
 :root{
+    --header: #303030;
     --bg: #121212;
-    --purple: #1b162c;
-    --violet: #3c162f;
-    --wine: #5c162e; 
-    --dred: #7c162e;
-    --red: #9c162e;
-
-    --headerbg: #0c0c0c; 
+    --sbg: #1d1d1d;
+    --sidebar: #0c0c0c; 
+    --red: #d32f2f;
+    --orange: #e06c6c;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -51,7 +49,7 @@ header{
 }
 
 .right-ct header{
-    background-color: var(--purple);
+    background-color: var(--header);
 }
 
 .right-ct img, .left-ct img{
@@ -59,7 +57,7 @@ header{
 }
 
 .left-ct{
-    background-color: var(--violet);
+    background-color: var(--sidebar);
 }
 
 .left-ct ul a{
@@ -91,7 +89,7 @@ header{
 }
 
 #active{
-    background-color: var(--bg);
+    background-color: var(--red);
 }
 
 .table-div{
@@ -106,7 +104,7 @@ header{
 }
 
 .table-div thead{
-    background-color: var(--wine);
+    background-color: var(--red);
 }
 
 .table-div thead tr th:first-child{
@@ -118,7 +116,7 @@ header{
 }
 
 .table-div table{
-    background-color: var(--violet);
+    background-color: var(--sbg);
     border-radius: 5px;
     padding: .5rem .25rem;
     margin: .5rem 0;
@@ -126,7 +124,7 @@ header{
 }
 
 .table-div table tr th, .right-content table tr td{
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
 }
 
 .table-div button{
@@ -150,14 +148,27 @@ header{
     background-color: red;
 }
 
+.table-div .insert-button{
+    background-color: green;
+}
+
 .table-div .add-button:hover{
     background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
 }
 
-.table-div .remove-button:hover, .table-div .alter-button:hover{
+.table-div .remove-button:hover, .table-div .alter-button:hover, .table-div .insert-button:hover{
     transform: scale(0.9);
 }
 
 .table-div .alter-button{
     background-color: orange;
+}
+
+.table-container input[type="text"]{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: .5rem;
+    background-color: var(--header);
 }
