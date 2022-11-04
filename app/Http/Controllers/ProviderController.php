@@ -3,26 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Provider;
 
 class ProviderController extends Controller
 {
-    public function insertProvider(Request $request){
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $telephone = $request->input('telephone');
-        $cnpj = $request->input('cnpj');
-        $address = $request->input('address');
+    public function create(Request $request){
+        $provider = new Provider;
+        $provider->name = $request->input('name');
+        $provider->email = $request->input('email');
+        $provider->telephone = $request->input('telephone');
+        $provider->cnpj = $request->input('cnpj');
+        $provider->address = $request->input('address');
+        $provider->save();
 
-        $data = array(
-            'name' => $name, 
-            'email' => $email, 
-            'telephone' => $telephone,
-            'cnpj' => $cnpj, 
-            'address' => $address
-        );
+        return redirect()->back()->withFragment('providers');
+    }
 
-        DB::table('provider')->insert($data);
+    public function delete($id){
+        Provider::destroy($id);
 
-        return Redirect::back();
+        return redirect()->back()->withFragment('providers');
     }
 }

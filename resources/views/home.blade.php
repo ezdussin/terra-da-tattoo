@@ -30,6 +30,28 @@
             </header>
             <div class="right-content" id="dashboard">
                 <h3>Dashboard</h3>
+                <div class="square-content">
+                    <div class="square square-1">
+                        <span class="order-amount">0</span>
+                        <span class="order-span order-title">Pedidos</span>
+                        <span class="order-span order-status">Entregues</span>
+                    </div>
+                    <div class="square square-2">
+                        <span class="order-amount">0</span>
+                        <span class="order-span order-title">Pedidos</span>
+                        <span class="order-span order-status">Embalando</span>
+                    </div>
+                    <div class="square square-3">
+                        <span class="order-amount">0</span>
+                        <span class="order-span order-title">Pedidos</span>
+                        <span class="order-span order-status">Enviando</span>
+                    </div>
+                    <div class="square square-4">
+                        <span class="order-amount">0</span>
+                        <span class="order-span order-title">Pedidos</span>
+                        <span class="order-span order-status">Entregando</span>
+                    </div>
+                </div>
             </div>
             <div class="right-content" id="users">
                 <h3>Usuários</h3>
@@ -51,13 +73,26 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->password }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td><button class="alter-button">Alterar</button></td>
-                                    <td><button class="remove-button">X</button></td>
+                                    <form action="">
+                                        <td><button class="alter-button">Alterar</button></td>
+                                    </form>
+                                    <form action="{{ '/api/deleteUser/' . $user->id }}" method="post">
+                                        <td><button class="remove-button">X</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
+                                <tr class="table-form" id="users-table-form">
+                                    <form action="/api/insertUser" method="post">
+                                        <td><input type="text" id="name" name="name"></td>
+                                        <td><input type="text" id="password" name="password"></td>
+                                        <td><input type="email" id="email" name="email"></td>
+                                        <td><button class="insert-button">Inserir</button></td>
+                                    </form>
+                                        <td><button class="remove-button" id="users-remove-button">X</button></td>
+                                </tr>
                             </tbody>
                         </table>
-                        <button class="add-button">+</button>
+                        <button class="add-button" id="users-add-button">+</button>
                     </div>
                 </div>
             </div>
@@ -85,24 +120,28 @@
                                     <td>{{ $provider->telephone }}</td>
                                     <td>{{ $provider->cnpj }}</td>
                                     <td>{{ $provider->address }}</td>
-                                    <td><button class="alter-button">Alterar</button></td>
-                                    <td><button class="remove-button">X</button></td>
+                                    <form action="">
+                                        <td><button class="alter-button">Alterar</button></td>
+                                    </form>
+                                    <form action="{{ '/api/deleteProvider/' . $provider->id }}" method="post">
+                                        <td><button class="remove-button">X</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
-                                <tr>
-                                    <form id="insert-form" action="/insertProvider" method="post">
-                                        <td><input type="text" name="name"></td>
-                                        <td><input type="text" name="email"></td>
-                                        <td><input type="text" name="telephone"></td>
-                                        <td><input type="text" name="cnpj"></td>
-                                        <td><input type="text" name="address"></td>
+                                <tr class="table-form" id="providers-table-form">
+                                    <form action="/api/insertProvider" method="post">
+                                        <td><input type="text" id="name" name="name"></td>
+                                        <td><input type="email" id="email" name="email"></td>
+                                        <td><input type="text" id="telephone" name="telephone"></td>
+                                        <td><input type="text" id="cnpj" name="cnpj"></td>
+                                        <td><input type="text" id="address" name="address"></td>
                                         <td><button class="insert-button">Inserir</button></td>
                                     </form>
-                                        <td><button class="remove-button">X</button></td>
+                                        <td><button class="remove-button" id="providers-remove-button">X</button></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="add-button">+</button>
+                        <button class="add-button" id="providers-add-button">+</button>
                     </div>
                 </div>
             </div>
@@ -126,13 +165,26 @@
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->email }}</td>
                                     <td>{{ $client->appointment }}</td>
-                                    <td><button class="alter-button">Alterar</button></td>
-                                    <td><button class="remove-button">X</button></td>
+                                    <form action="">
+                                        <td><button class="alter-button">Alterar</button></td>
+                                    </form>
+                                    <form action="{{ '/api/deleteClient/' . $client->id }}" method="post">
+                                        <td><button class="remove-button">X</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
+                                <tr class="table-form" id="clients-table-form">
+                                    <form action="/api/insertClient" method="post">
+                                        <td><input type="text" id="name" name="name"></td>
+                                        <td><input type="email" id="email" name="email"></td>
+                                        <td><input type="date" id="date" name="date"></td>
+                                        <td><button class="insert-button">Inserir</button></td>
+                                    </form>
+                                        <td><button class="remove-button" id="clients-remove-button">X</button></td>
+                                </tr>
                             </tbody>
                         </table>
-                        <button class="add-button">+</button>
+                        <button class="add-button" id="clients-add-button">+</button>
                     </div>
                 </div>
             </div>
@@ -158,13 +210,27 @@
                                     <td>{{ $product->description }}</td>
                                     <td>R$ {{ $product->price }}</td>
                                     <td>{{ $product->amount }}</td>
-                                    <td><button class="alter-button">Alterar</button></td>
-                                    <td><button class="remove-button">X</button></td>
+                                    <form action="">
+                                        <td><button class="alter-button">Alterar</button></td>
+                                    </form>
+                                    <form action="{{ '/api/deleteProduct/' . $product->id }}" method="post">
+                                        <td><button class="remove-button">X</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
+                                <tr class="table-form" id="products-table-form">
+                                    <form action="/api/insertProduct" method="post">
+                                        <td><input type="text" id="name" name="name"></td>
+                                        <td><input type="text" id="description" name="description"></td>
+                                        <td><input type="number" id="price" name="price" step='0.01'></td>
+                                        <td><input type="number" id="amount" name="amount"></td>
+                                        <td><button class="insert-button">Inserir</button></td>
+                                    </form>
+                                        <td><button class="remove-button" id="products-remove-button">X</button></td>
+                                </tr>
                             </tbody>
                         </table>
-                        <button class="add-button">+</button>
+                        <button class="add-button" id="products-add-button">+</button>
                     </div>
                 </div>
             </div>
