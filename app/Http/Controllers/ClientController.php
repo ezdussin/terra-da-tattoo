@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use DB;
 
 class ClientController extends Controller
 {
+
+    public function index(){
+        $dados = DB::table('clients')->get();
+        return view('clientes', compact('dados'));
+    }
+
     public function create(Request $request){
         $client = new Client;
         $client->name = $request->input('name');
@@ -18,7 +25,7 @@ class ClientController extends Controller
     }
 
     public function delete($id){
-        Provider::destroy($id);
+        Client::destroy($id);
 
         return redirect()->back()->withFragment('clients');
     }

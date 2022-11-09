@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,8 @@ Route::get('/', function () {
     'providers' => DB::table('providers')->get(), 
     'clients' => DB::table('clients')->get()]);
 });
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/providers', [ProviderController::class, 'index']);
+Route::get('/clients', [ClientController::class, 'index']);

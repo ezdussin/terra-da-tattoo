@@ -6,16 +6,14 @@ create table product(
 	name varchar(255) not null,
 	description varchar(255) not null,
 	price decimal(10, 2) not null,
-	amount int not null,
-	created_timestamp timestamp not null default current_timestamp
+	amount int not null
 );
 
 create table users(
 	id serial primary key,
 	name varchar(255) not null,
 	password varchar(255) not null,
-	email varchar(255) not null,
-	created_timestamp timestamp not null default current_timestamp
+	email varchar(255) not null
 );
 
 create table providers(
@@ -24,15 +22,13 @@ create table providers(
 	email varchar(255) not null,
 	telephone varchar(15) not null,
 	cnpj varchar(14) not null,
-	address varchar(255) not null,
-	created_timestamp timestamp not null default current_timestamp
+	address varchar(255) not null
 );
 
 create table clients(
 	id serial primary key,
 	name varchar(255) not null,
 	email varchar(255) not null,
-	appointment timestamp not null,
-	created_timestamp timestamp not null default current_timestamp
+	appointment timestamp not null
 );
 
