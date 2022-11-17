@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Provider;
+use DB;
 
 class ProviderController extends Controller
 {
+    public function index(){
+        $data = DB::table('providers')->get();
+        return view('providers', compact('data'));
+    }
+
     public function create(Request $request){
         $provider = new Provider;
         $provider->name = $request->input('name');
@@ -16,12 +22,12 @@ class ProviderController extends Controller
         $provider->address = $request->input('address');
         $provider->save();
 
-        return redirect()->back()->withFragment('providers');
+        return redirect()->back();
     }
 
     public function delete($id){
         Provider::destroy($id);
 
-        return redirect()->back()->withFragment('providers');
+        return redirect()->back();
     }
 }

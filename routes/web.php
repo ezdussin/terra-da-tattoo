@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +18,10 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/laravel', function () {
-    return view('welcome');
+Route::get('/dashboard', function() {
+    return view('dashboard');
 });
-
-Route::get('/', function () {
-    return view('home', 
-    ['products' => DB::table('products')->get(), 
-    'users' => DB::table('users')->get(), 
-    'providers' => DB::table('providers')->get(), 
-    'clients' => DB::table('clients')->get()]);
-});
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/providers', [ProviderController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/clients', [ClientController::class, 'index']);

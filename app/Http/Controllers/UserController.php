@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 
 class UserController extends Controller
 {
+    public function index(){
+        $data = DB::table('users')->get();
+        return view('users', compact('data'));
+    }
+
     public function create(Request $request){
         $user = new User;
         $user->name = $request->input('name');
@@ -14,12 +20,12 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        return redirect()->back()->withFragment('users');
+        return redirect()->back();
     }
 
     public function delete($id){
-        Provider::destroy($id);
+        User::destroy($id);
 
-        return redirect()->back()->withFragment('users');
+        return redirect()->back();
     }
 }
